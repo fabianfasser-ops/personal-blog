@@ -15,23 +15,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <Header />
 
     <main class="landing">
-      <div class="hero">
+      <section class="hero">
         <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
 
         <h1 class="hero-name">Fabian Fasser</h1>
         <p class="hero-title">Software Engineer</p>
 
         <p class="hero-text">
-          I build modern, scalable web applications with a focus on clean architecture,
-          automation, and developer experience.
+          I design and build modern, scalable software with a focus on clean architecture,
+          developer experience, and long‑term maintainability.  
+          This website is my digital home — a place to share my work, ideas, and interests.
         </p>
-
-        <div class="hero-links">
-          <a href="/cv" class="btn">View CV</a>
-          <a href="/projects" class="btn">Projects</a>
-          <a href="/contact" class="btn">Contact</a>
-        </div>
-      </div>
+      </section>
     </main>
 
     <Footer />
@@ -42,43 +37,45 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   .landing {
     display: flex;
     justify-content: center;
-    padding: 4rem 1rem;
+    padding: 5rem 1rem 4rem;
   }
 
   .hero {
-    max-width: 700px;
+    max-width: 720px;
     text-align: center;
   }
 
   .hero-img {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1.5rem;
-    border: 2px solid #ddd;
+    margin-bottom: 1.8rem;
+    border: 2px solid #e5e5e5;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
 
   .hero-name {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     margin: 0;
     font-weight: 600;
+    letter-spacing: 0.5px;
   }
 
   .hero-title {
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
   }
 
   .hero-text {
-    margin-top: 1.5rem;
-    font-size: 1.05rem;
+    margin-top: 1.8rem;
+    font-size: 1.15rem;
     color: #444;
-    line-height: 1.6;
+    line-height: 1.75;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  .hero-links {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center
+</style>
