@@ -13,7 +13,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
   <body>
     <Header />
-
     <main class="landing">
       <section class="hero">
         <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
@@ -21,13 +20,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
         <h1 class="hero-name">Fabian Fasser</h1>
         <p class="hero-title">Solutions Engineer</p>
 
-        <p class="hero-text">
-          I’m a Solutions Engineer at Cisco, working with Service Providers across Switzerland to solve complex challenges with tailored, customer-focused solutions. With a background in software development, automation, and monitoring, I enjoy helping people make the most out of technology: simple, effective, and built around their needs.
-          I hold a Bachelor of Science in Business Information Technology and I am currently pursuing an MBA at IE University, further strengthening my ability to bridge technology and business strategy.
-          I genuinely believe that culture eats strategy for breakfast, because great results start with trust, collaboration, and strong relationships.
-          Outside of work, I’m always up for a good game of ice hockey, skiing in the mountains, or discovering new places and cultures. And yes, I never say no to a great coffee.
-          Let’s connect!
-        </p>
+        <blockquote class="hero-quote">
+          “Technology should feel simple, human, and purposeful — great solutions start with understanding people.”
+        </blockquote>
       </section>
     </main>
 
@@ -36,48 +31,94 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
+  :root {
+    --text: #111;
+    --muted: #666;
+    --border: #e5e5e5;
+    --bg: #fafafa;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
   .landing {
+    min-height: calc(100vh - 140px);
     display: flex;
     justify-content: center;
-    padding: 5rem 1rem 4rem;
+    align-items: center;
+    padding: 2rem 1rem;
   }
 
   .hero {
-    max-width: 720px;
+    max-width: 640px;
     text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   }
 
   .hero-img {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1.8rem;
-    border: 2px solid #e5e5e5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--border);
   }
 
   .hero-name {
-    font-size: 2.8rem;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     margin: 0;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
   }
 
   .hero-title {
     margin-top: 0.4rem;
-    color: #666;
-    font-size: 1.2rem;
-    font-weight: 400;
+    color: var(--muted);
+    font-size: 1.15rem;
   }
 
-  .hero-text {
-    margin-top: 1.8rem;
-    font-size: 1.15rem;
-    color: #444;
-    line-height: 1.75;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .hero-quote {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #333;
+    font-style: italic;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  .hero-quote::before {
+    content: "\201C";
+    font-size: 3rem;
+    position: absolute;
+    left: -0.5rem;
+    top: -1rem;
+    color: #ddd;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --text: #f5f5f5;
+      --muted: #aaa;
+      --border: #2a2a2a;
+      --bg: #0f0f0f;
+    }
+
+    .hero {
+      background: #151515;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero-quote::before {
+      color: #333;
+    }
   }
 </style>
+
