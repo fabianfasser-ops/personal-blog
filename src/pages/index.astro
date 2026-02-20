@@ -1,319 +1,137 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <Header />
-    <main class="landing">
+<header>
+  <nav>
+    <a href="/" class="site-title">{SITE_TITLE}</a>
 
-      <!-- Subtle background grain overlay -->
-      <div class="grain" aria-hidden="true"></div>
+    <div class="internal-links">
+      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href="/about">About</HeaderLink>
+    </div>
 
-      <section class="hero">
-
-        <!-- Avatar with ring accent -->
-        <div class="avatar-wrap reveal" style="--delay: 0s">
-          <div class="avatar-ring"></div>
-          <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
-        </div>
-
-        <!-- Name -->
-        <h1 class="hero-name reveal" style="--delay: 0.15s">Fabian Fasser</h1>
-
-        <!-- Role chip -->
-        <div class="role-chip reveal" style="--delay: 0.25s">
-          <span class="dot"></span>
-          Solutions Engineer · Cisco
-        </div>
-
-        <!-- Divider line -->
-        <div class="divider reveal" style="--delay: 0.35s"></div>
-
-        <!-- Tagline -->
-        <p class="hero-tagline reveal" style="--delay: 0.45s">
-          Turning complex networks into clear business value — <em>one conversation at a time.</em>
-        </p>
-
-        <!-- Pills / tags -->
-        <div class="tags reveal" style="--delay: 0.55s">
-          <span class="tag">Service Providers</span>
-          <span class="tag">Automation</span>
-          <span class="tag">Switzerland</span>
-          <span class="tag">MBA · IE University</span>
-          <span class="tag">Ice Hockey</span>
-          <span class="tag">Espresso</span>
-        </div>
-
-        <!-- CTA -->
-        <a href="https://linkedin.com" class="cta reveal" style="--delay: 0.65s" target="_blank" rel="noopener">
-          Let's connect
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
-          </svg>
-        </a>
-
-      </section>
-    </main>
-    <Footer />
-  </body>
-</html>
+    <div class="social-links">
+      <a href="https://github.com/fabianfasser" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true" width="18" height="18">
+          <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/fabian-fasser" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 16 16" aria-hidden="true" width="18" height="18">
+          <path fill="currentColor" d="M3.5 2.5A1.5 1.5 0 1 1 .5 2.5a1.5 1.5 0 0 1 3 0zM.75 5h2.5v9.5h-2.5V5zm4.75 0h2.4v1.3h.03c.33-.62 1.15-1.27 2.37-1.27 2.53 0 3 1.66 3 3.82v5.65h-2.5V9.5c0-.96-.02-2.2-1.34-2.2-1.34 0-1.55 1.05-1.55 2.13v5.07h-2.5V5z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
 
 <style>
-  /* ── Tokens ─────────────────────────────────── */
   :root {
     --cream:   #f7f5f0;
     --ink:     #1a1814;
     --muted:   #7a7672;
-    --accent:  #c8540a;          /* warm terracotta — distinct, not purple */
+    --accent:  #c8540a;
     --border:  rgba(26,24,20,.1);
-    --radius:  6px;
-    --ff-display: 'Cormorant Garamond', Georgia, serif;
-    --ff-body:    'DM Sans', system-ui, sans-serif;
+    --ff-body: 'DM Sans', system-ui, sans-serif;
   }
 
-  /* ── Reset / Base ───────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; }
-
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: var(--ff-body);
-    font-size: 15px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    /* Stretch so footer always sits at bottom */
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
-  }
-
-  /* ── Grain overlay ──────────────────────────── */
-  .grain {
-    pointer-events: none;
+  header {
     position: fixed;
-    inset: 0;
-    /* Below fixed header (z-index 50) */
-    z-index: 40;
-    opacity: .025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 200px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 50;
+    background: rgba(247,245,240,.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--ff-body);
   }
 
-  /* ── Layout ─────────────────────────────────── */
-  main {
-    /* Grow to fill space between header and footer */
-    flex: 1;
+  nav {
+    /* constrain width and center horizontally */
+    max-width: 1100px;
     width: 100%;
-    /* Push content below the fixed 56px header */
-    padding-top: 56px;
-  }
-
-  .landing {
-    width: 100%;
-    /* Center between header (56px) and footer (~52px) */
-    min-height: calc(100dvh - 56px - 52px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 56px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
+    justify-content: space-between;
+    gap: 1.5rem;
   }
 
-
-  .hero {
-    max-width: 560px;
-    width: 100%;
-    text-align: center;
-  }
-
-  /* ── Reveal animation ───────────────────────── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    animation: fadeUp .7s cubic-bezier(.22,.68,0,1.2) forwards;
-    animation-delay: var(--delay, 0s);
-  }
-
-  /* ── Avatar ─────────────────────────────────── */
-  .avatar-wrap {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 2rem;
-  }
-
-  .avatar-ring {
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 1.5px solid var(--accent);
-    opacity: .4;
-    animation: spin 18s linear infinite;
-    background: conic-gradient(
-      from 0deg,
-      transparent 70%,
-      var(--accent) 100%
-    );
-    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-            mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  .hero-img {
-    display: block;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--cream);
-    box-shadow:
-      0 0 0 1px var(--border),
-      0 8px 28px rgba(0,0,0,.1);
-    transition: transform .4s ease, box-shadow .4s ease;
-  }
-
-  .hero-img:hover {
-    transform: scale(1.04);
-    box-shadow:
-      0 0 0 1px var(--border),
-      0 16px 40px rgba(0,0,0,.15);
-  }
-
-  /* ── Name ───────────────────────────────────── */
-  .hero-name {
-    font-family: var(--ff-display);
-    font-size: clamp(2.4rem, 6vw, 3.6rem);
-    font-weight: 300;
-    letter-spacing: .02em;
-    line-height: 1.1;
-    margin-bottom: .6rem;
-  }
-
-  /* ── Role chip ──────────────────────────────── */
-  .role-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: .45rem;
-    font-size: .8rem;
+  /* Site title */
+  .site-title {
+    font-size: .78rem;
     font-weight: 500;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.8rem;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2.4s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: .5; transform: scale(.7); }
-  }
-
-  /* ── Divider ─────────────────────────────────── */
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: var(--border);
-    margin: 0 auto 1.8rem;
-  }
-
-  /* ── Tagline ─────────────────────────────────── */
-  .hero-tagline {
-    font-family: var(--ff-display);
-    font-size: clamp(1.2rem, 3vw, 1.55rem);
-    font-weight: 300;
     color: var(--ink);
-    line-height: 1.55;
-    margin-bottom: 2rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .2s;
   }
 
-  .hero-tagline em {
-    font-style: italic;
+  .site-title:hover {
     color: var(--accent);
   }
 
-  /* ── Tags ───────────────────────────────────── */
-  .tags {
+  /* Nav links */
+  .internal-links {
     display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-    justify-content: center;
-    margin-bottom: 2.4rem;
-  }
-
-  .tag {
-    font-size: .72rem;
-    font-weight: 400;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: .28rem .7rem;
-    border-radius: 999px;
-    transition: color .2s, border-color .2s;
-  }
-
-  .tag:hover {
-    color: var(--ink);
-    border-color: rgba(26,24,20,.3);
-  }
-
-  /* ── CTA ─────────────────────────────────────── */
-  .cta {
-    display: inline-flex;
     align-items: center;
-    gap: .5rem;
-    text-decoration: none;
-    font-size: .85rem;
-    font-weight: 500;
+    gap: .15rem;
+  }
+
+  .internal-links :global(a) {
+    font-size: .78rem;
+    font-weight: 400;
     letter-spacing: .08em;
     text-transform: uppercase;
-    color: var(--cream);
-    background: var(--ink);
-    padding: .75rem 1.6rem;
-    border-radius: var(--radius);
-    transition: background .25s, transform .25s, box-shadow .25s;
-    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+    color: var(--muted);
+    text-decoration: none;
+    padding: .35rem .65rem;
+    border-radius: 4px;
+    border-bottom: none;
+    transition: color .2s, background .2s;
   }
 
-  .cta:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(200,84,10,.25);
+  .internal-links :global(a:hover),
+  .internal-links :global(a.active) {
+    color: var(--ink);
+    background: rgba(26,24,20,.05);
   }
 
-  .cta svg {
-    transition: transform .25s;
+  .internal-links :global(a.active) {
+    color: var(--accent);
+    background: rgba(200,84,10,.06);
   }
 
-  .cta:hover svg {
-    transform: translateX(3px);
+  /* Social icons */
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
   }
 
-  /* ── Responsive ─────────────────────────────── */
+  .social-links a {
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    transition: color .2s, transform .2s;
+  }
+
+  .social-links a:hover {
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 480px) {
-    .landing { padding: 4rem 1rem 3.5rem; }
+    .social-links { display: none; }
   }
 </style>
