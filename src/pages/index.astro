@@ -13,16 +13,21 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
   <body>
     <Header />
-<main class="landing">
+
+    <main class="landing">
       <section class="hero">
         <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
 
         <h1 class="hero-name">Fabian Fasser</h1>
         <p class="hero-title">Solutions Engineer</p>
 
-        <blockquote class="hero-quote">
-          “Technology should feel simple, human, and purposeful — great solutions start with understanding people.”
-        </blockquote>
+        <p class="hero-text">
+          I’m a Solutions Engineer at Cisco, working with Service Providers across Switzerland to solve complex challenges with tailored, customer-focused solutions. With a background in software development, automation, and monitoring, I enjoy helping people make the most out of technology: simple, effective, and built around their needs.
+          I hold a Bachelor of Science in Business Information Technology and I am currently pursuing an MBA at IE University, further strengthening my ability to bridge technology and business strategy.
+          I genuinely believe that culture eats strategy for breakfast, because great results start with trust, collaboration, and strong relationships.
+          Outside of work, I’m always up for a good game of ice hockey, skiing in the mountains, or discovering new places and cultures. And yes, I never say no to a great coffee.
+          Let’s connect!
+        </p>
       </section>
     </main>
 
@@ -31,11 +36,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 </html>
 
 <style>
-  body {
-    color: #111;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
-
   .landing {
     display: flex;
     justify-content: center;
@@ -58,7 +58,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   }
 
   .hero-name {
-    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-size: 2.8rem;
     margin: 0;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -71,7 +71,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     font-weight: 400;
   }
 
-  .hero-quote {
+  .hero-text {
     margin-top: 1.8rem;
     font-size: 1.15rem;
     color: #444;
@@ -79,17 +79,5 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    font-style: italic;
-    position: relative;
-    padding: 0 1rem;
-  }
-
-  .hero-quote::before {
-    content: "•C";
-    font-size: 3rem;
-    position: absolute;
-    left: -0.5rem;
-    top: -1rem;
-    color: #e5e5e5;
   }
 </style>
