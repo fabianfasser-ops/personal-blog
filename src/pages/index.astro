@@ -4,80 +4,300 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   </head>
-
   <body>
     <Header />
-
     <main class="landing">
+
+      <!-- Subtle background grain overlay -->
+      <div class="grain" aria-hidden="true"></div>
+
       <section class="hero">
-        <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
 
-        <h1 class="hero-name">Fabian Fasser</h1>
-        <p class="hero-title">Solutions Engineer</p>
+        <!-- Avatar with ring accent -->
+        <div class="avatar-wrap reveal" style="--delay: 0s">
+          <div class="avatar-ring"></div>
+          <img src="/your-photo.jpg" alt="Portrait of Fabian Fasser" class="hero-img" />
+        </div>
 
-        <p class="hero-text">
-          I’m a Solutions Engineer at Cisco, working with Service Providers across Switzerland to solve complex challenges with tailored, customer-focused solutions. With a background in software development, automation, and monitoring, I enjoy helping people make the most out of technology: simple, effective, and built around their needs.
-          I hold a Bachelor of Science in Business Information Technology and I am currently pursuing an MBA at IE University, further strengthening my ability to bridge technology and business strategy.
-          I genuinely believe that culture eats strategy for breakfast, because great results start with trust, collaboration, and strong relationships.
-          Outside of work, I’m always up for a good game of ice hockey, skiing in the mountains, or discovering new places and cultures. And yes, I never say no to a great coffee.
-          Let’s connect!
+        <!-- Name -->
+        <h1 class="hero-name reveal" style="--delay: 0.15s">Fabian Fasser</h1>
+
+        <!-- Role chip -->
+        <div class="role-chip reveal" style="--delay: 0.25s">
+          <span class="dot"></span>
+          Solutions Engineer · Cisco
+        </div>
+
+        <!-- Divider line -->
+        <div class="divider reveal" style="--delay: 0.35s"></div>
+
+        <!-- Tagline -->
+        <p class="hero-tagline reveal" style="--delay: 0.45s">
+          Turning complex networks into clear business value — <em>one conversation at a time.</em>
         </p>
+
+        <!-- Pills / tags -->
+        <div class="tags reveal" style="--delay: 0.55s">
+          <span class="tag">Service Providers</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Switzerland</span>
+          <span class="tag">MBA · IE University</span>
+          <span class="tag">Ice Hockey</span>
+          <span class="tag">Espresso</span>
+        </div>
+
+        <!-- CTA -->
+        <a href="https://linkedin.com" class="cta reveal" style="--delay: 0.65s" target="_blank" rel="noopener">
+          Let's connect
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
       </section>
     </main>
-
     <Footer />
   </body>
 </html>
 
 <style>
+  /* ── Tokens ─────────────────────────────────── */
+  :root {
+    --cream:   #f7f5f0;
+    --ink:     #1a1814;
+    --muted:   #7a7672;
+    --accent:  #c8540a;          /* warm terracotta — distinct, not purple */
+    --border:  rgba(26,24,20,.1);
+    --radius:  6px;
+    --ff-display: 'Cormorant Garamond', Georgia, serif;
+    --ff-body:    'DM Sans', system-ui, sans-serif;
+  }
+
+  /* ── Reset / Base ───────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--ff-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Grain overlay ──────────────────────────── */
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    opacity: .025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px;
+  }
+
+  /* ── Layout ─────────────────────────────────── */
   .landing {
+    min-height: 85vh;
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 5rem 1rem 4rem;
+    padding: 6rem 1.5rem 5rem;
   }
 
   .hero {
-    max-width: 720px;
+    max-width: 560px;
+    width: 100%;
     text-align: center;
   }
 
+  /* ── Reveal animation ───────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    animation: fadeUp .7s cubic-bezier(.22,.68,0,1.2) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  /* ── Avatar ─────────────────────────────────── */
+  .avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid var(--accent);
+    opacity: .4;
+    animation: spin 18s linear infinite;
+    background: conic-gradient(
+      from 0deg,
+      transparent 70%,
+      var(--accent) 100%
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
   .hero-img {
-    width: 150px;
-    height: 150px;
+    display: block;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1.8rem;
-    border: 2px solid #e5e5e5;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 3px solid var(--cream);
+    box-shadow:
+      0 0 0 1px var(--border),
+      0 8px 28px rgba(0,0,0,.1);
+    transition: transform .4s ease, box-shadow .4s ease;
   }
 
+  .hero-img:hover {
+    transform: scale(1.04);
+    box-shadow:
+      0 0 0 1px var(--border),
+      0 16px 40px rgba(0,0,0,.15);
+  }
+
+  /* ── Name ───────────────────────────────────── */
   .hero-name {
-    font-size: 2.8rem;
-    margin: 0;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-family: var(--ff-display);
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 300;
+    letter-spacing: .02em;
+    line-height: 1.1;
+    margin-bottom: .6rem;
   }
 
-  .hero-title {
-    margin-top: 0.4rem;
-    color: #666;
-    font-size: 1.2rem;
+  /* ── Role chip ──────────────────────────────── */
+  .role-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .5; transform: scale(.7); }
+  }
+
+  /* ── Divider ─────────────────────────────────── */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto 1.8rem;
+  }
+
+  /* ── Tagline ─────────────────────────────────── */
+  .hero-tagline {
+    font-family: var(--ff-display);
+    font-size: clamp(1.2rem, 3vw, 1.55rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tagline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── Tags ───────────────────────────────────── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+  }
+
+  .tag {
+    font-size: .72rem;
     font-weight: 400;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: .28rem .7rem;
+    border-radius: 999px;
+    transition: color .2s, border-color .2s;
   }
 
-  .hero-text {
-    margin-top: 1.8rem;
-    font-size: 1.15rem;
-    color: #444;
-    line-height: 1.75;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .tag:hover {
+    color: var(--ink);
+    border-color: rgba(26,24,20,.3);
+  }
+
+  /* ── CTA ─────────────────────────────────────── */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    padding: .75rem 1.6rem;
+    border-radius: var(--radius);
+    transition: background .25s, transform .25s, box-shadow .25s;
+    box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  }
+
+  .cta:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(200,84,10,.25);
+  }
+
+  .cta svg {
+    transition: transform .25s;
+  }
+
+  .cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 480px) {
+    .landing { padding: 4rem 1rem 3.5rem; }
   }
 </style>
