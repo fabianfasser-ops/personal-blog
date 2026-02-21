@@ -118,18 +118,7 @@ import { SITE_TITLE } from '../consts';
           </div>
         </div>
 
-        <div class="divider reveal" style="--delay: 0.82s"></div>
 
-        <!-- CTA -->
-        <div class="cta-row reveal" style="--delay: 0.88s">
-          <a href="https://www.linkedin.com/in/fabian-fasser" target="_blank" rel="noopener" class="cta">
-            Let's connect
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="15" height="15">
-              <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
-            </svg>
-          </a>
-          <a href="mailto:f.fasser@bluewin.ch" class="cta-ghost">f.fasser@bluewin.ch</a>
-        </div>
 
       </section>
     </main>
@@ -337,56 +326,6 @@ import { SITE_TITLE } from '../consts';
   .interest-icon {
     font-size: 1rem;
     line-height: 1;
-  }
-
-  /* ── CTA ─────────────────────────────────────── */
-  .cta-row {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-  }
-
-  .cta {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    text-decoration: none;
-    font-size: .8rem;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--cream);
-    background: var(--ink);
-    padding: .7rem 1.5rem;
-    border-radius: var(--radius);
-    transition: background .25s, transform .25s, box-shadow .25s;
-    box-shadow: 0 2px 12px rgba(0,0,0,.1);
-  }
-
-  .cta:hover {
-    background: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(200,84,10,.22);
-  }
-
-  .cta svg { transition: transform .25s; }
-  .cta:hover svg { transform: translateX(3px); }
-
-  .cta-ghost {
-    font-size: .8rem;
-    font-weight: 400;
-    letter-spacing: .06em;
-    color: var(--muted);
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 1px;
-    transition: color .2s, border-color .2s;
-  }
-
-  .cta-ghost:hover {
-    color: var(--ink);
-    border-color: var(--ink);
   }
 
   /* ── Explore cards ──────────────────────────── */
