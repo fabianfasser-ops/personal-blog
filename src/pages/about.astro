@@ -1,62 +1,475 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
 ---
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`About — ${SITE_TITLE}`} description="Solutions Engineer at Cisco, bridging technology and business across Switzerland." />
+  </head>
+  <body>
+    <Header />
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+    <main>
+      <!-- Hero section -->
+      <section class="about-hero">
+        <div class="about-hero-inner">
+          <div class="label reveal" style="--delay: 0s">About</div>
+          <h1 class="about-name reveal" style="--delay: 0.1s">Fabian Fasser</h1>
+          <p class="about-role reveal" style="--delay: 0.2s">
+            <span class="dot"></span>
+            Solutions Engineer · Cisco · Switzerland
+          </p>
+        </div>
+      </section>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+      <!-- Content -->
+      <section class="about-content">
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+        <!-- Block: Work -->
+        <article class="block reveal" style="--delay: 0.3s">
+          <span class="block-label">Work</span>
+          <div class="block-body">
+            <p>I'm a Solutions Engineer at Cisco, working with Service Providers across Switzerland to solve complex challenges with tailored, customer-focused solutions.</p>
+            <p>With a background in software development, automation, and monitoring, I enjoy helping people make the most out of technology — simple, effective, and built around their needs.</p>
+          </div>
+        </article>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+        <div class="divider reveal" style="--delay: 0.38s"></div>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+        <!-- Block: Education -->
+        <article class="block reveal" style="--delay: 0.42s">
+          <span class="block-label">Education</span>
+          <div class="block-body">
+            <div class="edu-item">
+              <span class="edu-degree">MBA</span>
+              <span class="edu-school">IE University — in progress</span>
+            </div>
+            <div class="edu-item">
+              <span class="edu-degree">BSc Business Information Technology</span>
+              <span class="edu-school">Completed</span>
+            </div>
+            <p class="edu-note">Bridging technology and business strategy — because the best solutions speak both languages.</p>
+          </div>
+        </article>
+
+        <div class="divider reveal" style="--delay: 0.5s"></div>
+
+        <!-- Block: Philosophy -->
+        <article class="block reveal" style="--delay: 0.54s">
+          <span class="block-label">Philosophy</span>
+          <div class="block-body">
+            <blockquote>
+              Culture eats strategy for breakfast.
+            </blockquote>
+            <p>Great results start with trust, collaboration, and strong relationships — not just a well-crafted slide deck.</p>
+          </div>
+        </article>
+
+        <div class="divider reveal" style="--delay: 0.62s"></div>
+
+        <!-- Block: Beyond work -->
+        <article class="block reveal" style="--delay: 0.66s">
+          <span class="block-label">Beyond Work</span>
+          <div class="block-body">
+            <div class="interests">
+              <div class="interest">
+                <span class="interest-icon">🏒</span>
+                <span>Ice hockey</span>
+              </div>
+              <div class="interest">
+                <span class="interest-icon">⛷️</span>
+                <span>Skiing in the Alps</span>
+              </div>
+              <div class="interest">
+                <span class="interest-icon">✈️</span>
+                <span>Discovering new places & cultures</span>
+              </div>
+              <div class="interest">
+                <span class="interest-icon">☕</span>
+                <span>Never saying no to a great coffee</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="divider reveal" style="--delay: 0.74s"></div>
+
+        <!-- Explore more -->
+        <div class="explore-row reveal" style="--delay: 0.74s">
+          <span class="explore-label">Explore more</span>
+          <div class="explore-links">
+            <a href="/work" class="explore-card">
+              <span class="explore-card-title">Work</span>
+              <span class="explore-card-sub">7+ years · Cisco, inventx &amp; more</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <a href="/education" class="explore-card">
+              <span class="explore-card-title">Education</span>
+              <span class="explore-card-sub">MBA · BSc · Apprenticeship</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="divider reveal" style="--delay: 0.82s"></div>
+
+        <!-- CTA -->
+        <div class="cta-row reveal" style="--delay: 0.88s">
+          <a href="https://www.linkedin.com/in/fabian-fasser" target="_blank" rel="noopener" class="cta">
+            Let's connect
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="15" height="15">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd"/>
+            </svg>
+          </a>
+          <a href="mailto:f.fasser@bluewin.ch" class="cta-ghost">f.fasser@bluewin.ch</a>
+        </div>
+
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  /* ── Tokens ─────────────────────────────────── */
+  :root {
+    --cream:      #f7f5f0;
+    --ink:        #1a1814;
+    --muted:      #7a7672;
+    --accent:     #c8540a;
+    --border:     rgba(26,24,20,.1);
+    --radius:     6px;
+    --ff-display: 'Cormorant Garamond', Georgia, serif;
+    --ff-body:    'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--ff-body);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    padding-top: 56px; /* fixed header offset */
+  }
+
+  /* ── Reveal animation ───────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    animation: fadeUp .65s cubic-bezier(.22,.68,0,1.2) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  /* ── Hero ───────────────────────────────────── */
+  .about-hero {
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem 3rem;
+  }
+
+  .about-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .about-name {
+    font-family: var(--ff-display);
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: .01em;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-role {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .4; transform: scale(.7); }
+  }
+
+  /* ── Content layout ─────────────────────────── */
+  .about-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* ── Block ──────────────────────────────────── */
+  .block {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 0 2.5rem;
+    align-items: start;
+  }
+
+  .block-label {
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: .2rem;
+    white-space: nowrap;
+  }
+
+  .block-body p {
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .block-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Divider ─────────────────────────────────── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 2.2rem 0;
+  }
+
+  /* ── Education items ─────────────────────────── */
+  .edu-item {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    margin-bottom: .6rem;
+  }
+
+  .edu-degree {
+    font-weight: 500;
+    font-size: .9rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .edu-school {
+    font-size: .8rem;
+    color: var(--muted);
+  }
+
+  .edu-note {
+    margin-top: 1rem !important;
+    font-size: .88rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── Blockquote ──────────────────────────────── */
+  blockquote {
+    font-family: var(--ff-display);
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Interests ───────────────────────────────── */
+  .interests {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem 1.5rem;
+  }
+
+  .interest {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .88rem;
+    color: var(--ink);
+  }
+
+  .interest-icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  /* ── CTA ─────────────────────────────────────── */
+  .cta-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    padding: .7rem 1.5rem;
+    border-radius: var(--radius);
+    transition: background .25s, transform .25s, box-shadow .25s;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1);
+  }
+
+  .cta:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(200,84,10,.22);
+  }
+
+  .cta svg { transition: transform .25s; }
+  .cta:hover svg { transform: translateX(3px); }
+
+  .cta-ghost {
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: .06em;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: color .2s, border-color .2s;
+  }
+
+  .cta-ghost:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  /* ── Explore cards ──────────────────────────── */
+  .explore-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .explore-label {
+    font-size: .68rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .explore-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+  }
+
+  .explore-card {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    position: relative;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+
+  .explore-card svg {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--muted);
+    transition: transform .2s, color .2s;
+  }
+
+  .explore-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(200,84,10,.08);
+    transform: translateY(-2px);
+  }
+
+  .explore-card:hover svg {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  .explore-card-title {
+    font-size: .85rem;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .explore-card-sub {
+    font-size: .75rem;
+    color: var(--muted);
+  }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 600px) {
+    .block {
+      grid-template-columns: 1fr;
+      gap: .5rem 0;
+    }
+
+    .block-label {
+      color: var(--accent);
+    }
+
+    .interests {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero { padding: 3rem 1.25rem 2rem; }
+    .about-content { padding: 2.5rem 1.25rem 4rem; }
+  }
+</style>
