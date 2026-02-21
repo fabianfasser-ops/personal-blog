@@ -7,105 +7,254 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={`Blog — ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+
+    <main>
+      <!-- Hero -->
+      <section class="page-hero">
+        <div class="page-hero-inner">
+          <div class="label reveal" style="--delay: 0s">Writing</div>
+          <h1 class="page-title reveal" style="--delay: 0.1s">Blog</h1>
+          <p class="page-sub reveal" style="--delay: 0.18s">Thoughts on technology, business, and everything in between.</p>
+        </div>
+      </section>
+
+      <!-- Posts or empty state -->
+      <section class="blog-section">
+        <div class="blog-inner">
+          {posts.length > 0 ? (
+            <ul class="posts-grid reveal" style="--delay: 0.28s">
+              {posts.map((post) => (
+                <li>
+                  <a href={`/blog/${post.id}/`} class="post-card">
+                    {post.data.heroImage && (
+                      <img
+                        src={post.data.heroImage}
+                        alt=""
+                        class="post-img"
+                        width={720}
+                        height={360}
+                      />
+                    )}
+                    <div class="post-meta">
+                      <p class="post-date">
+                        <FormattedDate date={post.data.pubDate} />
+                      </p>
+                      <h2 class="post-title">{post.data.title}</h2>
+                      {post.data.description && (
+                        <p class="post-desc">{post.data.description}</p>
+                      )}
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div class="empty-state reveal" style="--delay: 0.28s">
+              <div class="empty-icon" aria-hidden="true">✦</div>
+              <h2 class="empty-title">Nothing here yet.</h2>
+              <p class="empty-sub">
+                No posts written yet — but maybe in the future.<br />
+                Stay tuned.
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
 </html>
+
+<style>
+  :root {
+    --cream:      #f7f5f0;
+    --ink:        #1a1814;
+    --muted:      #7a7672;
+    --accent:     #c8540a;
+    --border:     rgba(26,24,20,.1);
+    --radius:     6px;
+    --ff-display: 'Cormorant Garamond', Georgia, serif;
+    --ff-body:    'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--ff-body);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
+    width: 100%;
+    padding-top: 56px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    animation: fadeUp .65s cubic-bezier(.22,.68,0,1.2) forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  /* ── Hero ───────────────────────────────────── */
+  .page-hero {
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 2.5rem;
+  }
+
+  .page-hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .75rem;
+  }
+
+  .page-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: .9rem;
+  }
+
+  .page-sub {
+    font-size: .9rem;
+    color: var(--muted);
+  }
+
+  /* ── Blog section ───────────────────────────── */
+  .blog-section {
+    padding: 3rem 2rem 5rem;
+  }
+
+  .blog-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ── Posts grid ─────────────────────────────── */
+  .posts-grid {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .post-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: opacity .2s;
+  }
+
+  .posts-grid li:first-child .post-card {
+    padding-top: 0;
+  }
+
+  .post-card:hover { opacity: .7; }
+
+  .post-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .post-meta { display: flex; flex-direction: column; gap: .3rem; }
+
+  .post-date {
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .post-title {
+    font-family: var(--ff-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .post-desc {
+    font-size: .88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── Empty state ─────────────────────────────── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5rem 1rem 6rem;
+    gap: 1rem;
+  }
+
+  .empty-icon {
+    font-size: 1.8rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: .5rem;
+    animation: spin 12s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .empty-title {
+    font-family: var(--ff-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .empty-sub {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  /* ── Responsive ─────────────────────────────── */
+  @media (max-width: 600px) {
+    .page-hero { padding: 3rem 1.25rem 2rem; }
+    .blog-section { padding: 2.5rem 1.25rem 4rem; }
+  }
+</style>
